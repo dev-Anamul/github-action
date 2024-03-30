@@ -1,0 +1,21 @@
+name: run script through github action
+run-name: ${{ github.run_id }} is the unique id of the run
+
+on:
+  push:
+    branches:
+      - run-script
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: chane permission of scripts
+        run: chmod +x ./scripts/one.sh ./scripts/two.sh
+      - name: Run script one
+        run: ./scripts/one.sh
+      - name: Run script two
+        run: ./scripts/two.sh
