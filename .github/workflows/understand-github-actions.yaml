@@ -1,0 +1,28 @@
+name: understand github actions
+run-name: ${{github.actor}} is learning github actions
+
+on:
+  push:
+    branches:
+      - understand-github-actions
+
+jobs:
+  understand-github-actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v2
+      - name: setup node environment
+        uses: actions/setup-node@v2
+        with:
+          node-version: 20
+      - name: check node version
+        run: node --version
+      - name: install yarn
+        run: npm install -g yarn
+      - name: check yarn version
+        run: yarn --version
+      - name: install bats
+        run: npm install -g bats
+      - name: check bats version
+        run: bats --version
